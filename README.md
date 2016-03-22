@@ -1,16 +1,16 @@
 # Renlianshibie
-#include <opencv2/highgui/highgui.hpp>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/objdetect/objdetect.hpp>
 
-using namespace cv;
 
-void detectAndDraw( Mat& img, CascadeClassifier& cascade,
+
+      #include <opencv2/highgui/highgui.hpp>
+      #include <opencv2/imgproc/imgproc.hpp>
+      #include <opencv2/core/core.hpp>
+      #include <opencv2/objdetect/objdetect.hpp>
+      using namespace cv;
+      void detectAndDraw( Mat& img, CascadeClassifier& cascade,
                     CascadeClassifier& nestedCascade,
                     double scale, bool tryflip );
-
-     int main()
+                    int main()
     {
     VideoCapture cap(0);    //打开默认摄像头
     if(!cap.isOpened())
