@@ -10,8 +10,8 @@ void detectAndDraw( Mat& img, CascadeClassifier& cascade,
                     CascadeClassifier& nestedCascade,
                     double scale, bool tryflip );
 
-int main()
-{
+     int main()
+    {
     VideoCapture cap(0);    //打开默认摄像头
     if(!cap.isOpened())
     {
@@ -19,8 +19,7 @@ int main()
     }
     Mat frame;
     Mat edges;
-
-    CascadeClassifier cascade, nestedCascade;
+     CascadeClassifier cascade, nestedCascade;
     bool stop = false;
     //训练好的文件名称，放置在可执行文件同目录下
     cascade.load("haarcascade_frontalface_alt.xml");
@@ -33,11 +32,11 @@ int main()
             stop = true;
     }
     return 0;
-}
-void detectAndDraw( Mat& img, CascadeClassifier& cascade,
+    }
+    void detectAndDraw( Mat& img, CascadeClassifier& cascade,
                     CascadeClassifier& nestedCascade,
                     double scale, bool tryflip )
-{
+    {
     int i = 0;
     double t = 0;
     //建立用于存放人脸的向量容器
@@ -69,7 +68,9 @@ void detectAndDraw( Mat& img, CascadeClassifier& cascade,
     //小都可以检测到人脸),CV_HAAR_SCALE_IMAGE表示不是缩放分类器来检测，而是缩放图像，Size(30, 30)为目标的
     //最小最大尺寸
     
-    cascade.detectMultiScale( smallImg, faces,
+    
+
+     cascade.detectMultiScale( smallImg, faces,
         1.1, 2, 0
         //|CV_HAAR_FIND_BIGGEST_OBJECT
         //|CV_HAAR_DO_ROUGH_SEARCH
@@ -93,16 +94,14 @@ void detectAndDraw( Mat& img, CascadeClassifier& cascade,
         }
     }
     t = (double)cvGetTickCount() - t;
- //   qDebug( "detection time = %g ms\n", t/((double)cvGetTickFrequency()*1000.) );
     for( vector<Rect>::const_iterator r = faces.begin(); r != faces.end(); r++, i++ )
-    {
+        {
         Mat smallImgROI;
         vector<Rect> nestedObjects;
         Point center;
         Scalar color = colors[i%8];
         int radius;
-
-  double aspect_ratio = (double)r->width/r->height;
+        double aspect_ratio = (double)r->width/r->height;
         if( 0.75 < aspect_ratio && aspect_ratio < 1.3 )
         {
             //标示人脸时在缩小之前的图像上标示，所以这里根据缩放比例换算回去
