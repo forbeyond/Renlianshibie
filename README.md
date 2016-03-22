@@ -68,6 +68,7 @@ void detectAndDraw( Mat& img, CascadeClassifier& cascade,
     //每次图像尺寸减小的比例为1.1，2表示每一个目标至少要被检测到3次才算是真的目标(因为周围的像素和不同的窗口大
     //小都可以检测到人脸),CV_HAAR_SCALE_IMAGE表示不是缩放分类器来检测，而是缩放图像，Size(30, 30)为目标的
     //最小最大尺寸
+    
     cascade.detectMultiScale( smallImg, faces,
         1.1, 2, 0
         //|CV_HAAR_FIND_BIGGEST_OBJECT
@@ -101,7 +102,7 @@ void detectAndDraw( Mat& img, CascadeClassifier& cascade,
         Scalar color = colors[i%8];
         int radius;
 
-        double aspect_ratio = (double)r->width/r->height;
+  double aspect_ratio = (double)r->width/r->height;
         if( 0.75 < aspect_ratio && aspect_ratio < 1.3 )
         {
             //标示人脸时在缩小之前的图像上标示，所以这里根据缩放比例换算回去
